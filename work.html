@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Product Manager Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: #FFED4E;
+        }
+
+        .nav-links a:hover {
+            color: #FFED4E;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFED4E;
+            transition: width 0.3s;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .work-hero {
+            padding: 180px 120px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #FFED4E;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        .work-hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .work-hero h1 .highlight {
+            color: #FFED4E;
+        }
+
+        .work-hero p {
+            font-size: 22px;
+            color: #999999;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 60px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .filter-label {
+            color: #666666;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            background: transparent;
+            color: #FFFFFF;
+            border: 1px solid #333333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            border-color: #FFED4E;
+            color: #FFED4E;
+        }
+
+        .filter-btn.active {
+            background: #FFED4E;
+            color: #000000;
+            border-color: #FFED4E;
+        }
+
+        /* Projects Grid */
+        .projects-section {
+            padding: 80px 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 60px;
+        }
+
+        .project-card {
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #0a0a0a;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-image-wrapper {
+            border-color: #FFED4E;
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.85;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .view-project {
+            color: #FFED4E;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .arrow-icon {
+            transform: translateX(5px);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-size: 12px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+        }
+
+        .project-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            transition: color 0.3s;
+        }
+
+        .project-card:hover .project-title {
+            color: #FFED4E;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #999999;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Summary Stats */
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 80px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .summary-stat {
+            text-align: center;
+        }
+
+        .summary-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+
+        .summary-label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 120px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFED4E;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav, .work-hero, .filter-section, .projects-section, .summary-stats, footer {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            .work-hero h1 {
+                font-size: 56px;
+            }
+
+            .summary-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .work-hero, .filter-section, .projects-section, .summary-stats, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .work-hero {
+                padding-top: 140px;
+            }
+
+            .work-hero h1 {
+                font-size: 42px;
+            }
+
+            .work-hero p {
+                font-size: 18px;
+            }
+
+            .projects-grid {
+                gap: 50px;
+            }
+
+            .project-image-wrapper {
+                height: 300px;
+            }
+
+            .project-title {
+                font-size: 28px;
+            }
+
+            .project-metrics {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .summary-stats {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html">Maryann Muniu</a></div>
+        <ul class="nav-links">
+            <li><a href="work.html" class="active">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="work-hero">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Work</span>
+        </div>
+        <h1>Product Work That <span class="highlight">Drives Results</span></h1>
+        <p>From ideation to launch, each project represents strategic thinking, user-centered design, and measurable business impact. Here's how I solve problems that matter.</p>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-label">Filter by</div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="b2b">B2B SaaS</button>
+            <button class="filter-btn" data-filter="consumer">Consumer Apps</button>
+            <button class="filter-btn" data-filter="fintech">Fintech</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="web">Web Platform</button>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-section">
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <a href="Case-study-1.html" class="project-card" data-category="consumer mobile">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop" alt="Restaurant Menu App" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">Consumer</span>
+                    <span class="meta-tag">Mobile App</span>
+                </div>
+                <h3 class="project-title">Reducing Restaurant Menu Decision Fatigue by 60%</h3>
+                <p class="project-description">Redesigned digital menu experience for a multi-location restaurant chain, focusing on reducing cognitive load and increasing order completion through smart categorization.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">60%</span>
+                        <span class="metric-label">Faster Browsing</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">40%</span>
+                        <span class="metric-label">Completion ↑</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">25%</span>
+                        <span class="metric-label">Higher AOV</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="Case-study-2.html" class="project-card" data-category="b2b web">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="Analytics Platform" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">B2B SaaS</span>
+                    <span class="meta-tag">Web Platform</span>
+                </div>
+                <h3 class="project-title">Building a Self-Service Analytics Platform for 10K+ Users</h3>
+                <p class="project-description">Led product strategy for an enterprise analytics tool that democratized data access across organizations while maintaining governance and security.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">85%</span>
+                        <span class="metric-label">Less Tickets</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">10K+</span>
+                        <span class="metric-label">Active Users</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">$1.2M</span>
+                        <span class="metric-label">ARR Growth</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="Case-study-3.html" class="project-card" data-category="fintech consumer mobile">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop" alt="Fintech App" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">Fintech</span>
+                    <span class="meta-tag">Consumer App</span>
+                </div>
+                <h3 class="project-title">Simplifying Personal Finance for Gen Z</h3>
+                <p class="project-description">Launched a mobile-first budgeting app that made financial literacy accessible and engaging for young adults through behavioral psychology and intuitive design.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">200K</span>
+                        <span class="metric-label">Downloads</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">65%</span>
+                        <span class="metric-label">Retention</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">4.8★</span>
+                        <span class="metric-label">Rating</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="Case-study-4.html" class="project-card" data-category="consumer web">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="E-commerce Platform" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">E-commerce</span>
+                    <span class="meta-tag">Web Platform</span>
+                </div>
+                <h3 class="project-title">Reducing Cart Abandonment by 34% Through Checkout Optimization</h3>
+                <p class="project-description">Overhauled the checkout experience for a D2C e-commerce brand, eliminating friction points and building trust at critical conversion moments.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">34%</span>
+                        <span class="metric-label">Less Abandon</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">18%</span>
+                        <span class="metric-label">Revenue ↑</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">$800K</span>
+                        <span class="metric-label">Added Value</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 5 -->
+            <a href="Case-study-5.html" class="project-card" data-category="b2b web">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" alt="Collaboration Tool" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">B2B SaaS</span>
+                    <span class="meta-tag">Collaboration</span>
+                </div>
+                <h3 class="project-title">Streamlining Team Collaboration for Remote-First Companies</h3>
+                <p class="project-description">Built a lightweight collaboration tool that integrated seamlessly into existing workflows, reducing meeting time and improving async communication.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">45%</span>
+                        <span class="metric-label">Less Meetings</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">5K+</span>
+                        <span class="metric-label">Teams</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">92%</span>
+                        <span class="metric-label">Satisfaction</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 6 -->
+            <a href="Case-study-6.html" class="project-card" data-category="consumer mobile">
+                <div class="project-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Health App" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">
+                            View Case Study
+                            <span class="arrow-icon">→</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <span class="meta-tag">Healthcare</span>
+                    <span class="meta-tag">Mobile App</span>
+                </div>
+                <h3 class="project-title">Making Mental Health Support Accessible Through AI</h3>
+                <p class="project-description">Designed a mental health companion app that combined AI-powered journaling with therapist-approved techniques to support daily wellness practices.</p>
+                <div class="project-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">150K</span>
+                        <span class="metric-label">Active Users</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">70%</span>
+                        <span class="metric-label">Daily Active</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">4.9★</span>
+                        <span class="metric-label">App Rating</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Summary Stats -->
+    <section class="summary-stats">
+        <div class="summary-stat">
+            <div class="summary-number">6</div>
+            <div class="summary-label">Products Shipped</div>
+        </div>
+        <div class="summary-stat">
+            <div class="summary-number">500K+</div>
+            <div class="summary-label">Users Impacted</div>
+        </div>
+        <div class="summary-stat">
+            <div class="summary-number">$4.2M</div>
+            <div class="summary-label">Revenue Generated</div>
+        </div>
+        <div class="summary-stat">
+            <div class="summary-number">95%</div>
+            <div class="summary-label">Success Rate</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/">LinkedIn</a>
+                <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979">Twitter</a>
+                <a href="mailto:wambohmuniu@gmail.com">Email</a>
+                <a href="MaryAnn_Muniu_Resume.pdf">Resume</a>
+            </div>
+            <div class="footer-text">© 2024 Maryann Muniu. Crafted with purpose.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const categories = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else if (categories.includes(filterValue)) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Only observe cards after initial animation
+        setTimeout(() => {
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

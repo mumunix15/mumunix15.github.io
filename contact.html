@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Product Manager Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: #FFED4E;
+        }
+
+        .nav-links a:hover {
+            color: #FFED4E;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFED4E;
+            transition: width 0.3s;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 120px 0 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            max-width: 600px;
+            padding-top: 0;
+            position: relative;  
+            padding-top: 40px;  
+        }
+
+        .breadcrumb {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 0px;
+            letter-spacing: 0.5px;
+            position: absolute;
+            top: -40px;  
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #FFED4E;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        .contact-hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .contact-hero h1 .highlight {
+            color: #FFED4E;
+        }
+
+        .contact-hero p {
+            font-size: 20px;
+            color: #CCCCCC;
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-method:hover {
+            border-color: #FFED4E;
+            background: #0f0f0f;
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+        }
+
+        .contact-method:hover .contact-icon {
+            background: #FFED4E;
+        }
+
+        .contact-method:hover .contact-icon span {
+            filter: brightness(0);
+        }
+
+        .contact-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            font-size: 15px;
+            color: #999999;
+            margin: 0;
+        }
+
+        /* Form Section */
+        .form-container {
+            background: #0a0a0a;
+            padding: 50px;
+            border: 1px solid #1a1a1a;
+            margin-top: 135px;
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .form-subtitle {
+            font-size: 16px;
+            color: #999999;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #CCCCCC;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 18px;
+            background: #000000;
+            border: 1px solid #333333;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FFED4E;
+            background: #0a0a0a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: #FFED4E;
+            color: #000000;
+            border: 2px solid #FFED4E;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: #FFED4E;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Availability Section */
+        .availability-section {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .availability-card {
+            text-align: center;
+            padding: 50px 30px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s;
+        }
+
+        .availability-card:hover {
+            border-color: #FFED4E;
+            transform: translateY(-5px);
+        }
+
+        .availability-icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .availability-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .availability-card p {
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+            color: #FFED4E;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        /* Social Links Section */
+        .social-section {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+        }
+
+        .social-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .social-subtitle {
+            font-size: 18px;
+            color: #999999;
+            margin-bottom: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 35px;
+            background: #000000;
+            border: 1px solid #1a1a1a;
+            text-decoration: none;
+            color: inherit;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            border-color: #FFED4E;
+            transform: translateY(-5px);
+        }
+
+        .social-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover .social-icon-wrapper {
+            background: #FFED4E;
+        }
+
+        .social-link:hover .social-icon-wrapper span {
+            filter: brightness(0);
+        }
+
+        .social-icon {
+            font-size: 32px;
+        }
+
+        .social-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .social-handle {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* Response Time */
+        .response-note {
+            margin-top: 80px;
+            padding: 40px;
+            background: #0a0a0a;
+            border-left: 3px solid #FFED4E;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .response-note h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #FFED4E;
+        }
+
+        .response-note p {
+            font-size: 15px;
+            color: #CCCCCC;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 120px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFED4E;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            color: #00ff64;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav, .contact-hero, .availability-section, .social-section, footer {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-hero h1 {
+                font-size: 56px;
+            }
+
+            .availability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .contact-hero, .availability-section, .social-section, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .contact-hero {
+                padding-top: 140px;
+                padding-bottom: 60px;
+            }
+
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+
+            .form-container {
+                padding: 30px;
+            }
+
+            .social-section h2 {
+                font-size: 32px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html">Maryann Muniu</a></div>
+        <ul class="nav-links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="breadcrumb animate-in">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Contact</span>
+                </div>
+                <h1 class="animate-in delay-1">Let's <span class="highlight">Create</span> Together</h1>
+                <p class="animate-in delay-2">I'm always interested in hearing about new opportunities, interesting projects, or just connecting with fellow product enthusiasts. Choose your preferred way to reach out.</p>
+                
+                <div class="contact-methods animate-in delay-3">
+                    <a href="mailto:wambohmuniu@gmail.com" class="contact-method">
+                        <div class="contact-icon">
+                            <span>✉️</span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>wambohmuniu@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/yourprofile" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/" class="contact-method">
+                        <div class="contact-icon">
+                            <span>💼</span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>Connect professionally</p>
+                        </div>
+                    </a>
+
+                    <a href="https://calendly.com/yourlink" target="https://calendly.com/maryannmuniu" class="contact-method">
+                        <div class="contact-icon">
+                            <span>📅</span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Schedule a Call</h3>
+                            <p>Book a 30-minute chat</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="form-container animate-in delay-4">
+                <h2>Send a Message</h2>
+                <p class="form-subtitle">Fill out the form below and I'll get back to you within 24-48 hours.</p>
+                
+                <div class="success-message" id="successMessage">
+                    ✓ Message sent successfully! I'll get back to you soon.
+                </div>
+
+                <form action="https://formspree.io/f/xanpjgjj" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="job">Job Opportunity</option>
+                            <option value="project">Project Collaboration</option>
+                            <option value="consulting">Consulting Inquiry</option>
+                            <option value="speaking">Speaking Engagement</option>
+                            <option value="networking">Networking</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project, opportunity, or how I can help..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability Section -->
+    <section class="availability-section">
+        <div class="availability-grid">
+            <div class="availability-card">
+                <div class="availability-icon">💼</div>
+                <h3>Full-Time Roles</h3>
+                <p>Open to product management opportunities at growth-stage startups and established tech companies.</p>
+                <span class="status-badge">Open to Offers</span>
+            </div>
+
+            <div class="availability-card">
+                <div class="availability-icon">🚀</div>
+                <h3>Contract Work</h3>
+                <p>Available for short-term product strategy, design sprints, and product launches.</p>
+                <span class="status-badge">Limited Availability</span>
+            </div>
+
+            <div class="availability-card">
+                <div class="availability-icon">🎤</div>
+                <h3>Speaking & Mentoring</h3>
+                <p>Open to speaking at events, workshops, and mentoring aspiring product managers.</p>
+                <span class="status-badge">Always Open</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-section">
+        <h2>Connect on Social</h2>
+        <p class="social-subtitle">Follow my product journey, insights, and behind-the-scenes work across platforms.</p>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/" class="social-link">
+                <div class="social-icon-wrapper">
+                    <span class="social-icon">💼</span>
+                </div>
+                <span class="social-name">LinkedIn</span>
+                <span class="social-handle">@Maryann Muniu</span>
+            </a>
+
+            <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979" class="social-link">
+                <div class="social-icon-wrapper">
+                    <span class="social-icon">🐦</span>
+                </div>
+                <span class="social-name">Twitter</span>
+                <span class="social-handle">@Jemmy88605979</span>
+            </a>
+
+            <a href="https://github.com/mumunix15" target="https://github.com/mumunix15" class="social-link">
+                <div class="social-icon-wrapper">
+                    <span class="social-icon">💻</span>
+                </div>
+                <span class="social-name">GitHub</span>
+                <span class="social-handle">@mumunix15</span>
+            </a>
+
+            <a href="https://medium.com/@jammly05" target="https://medium.com/@jammly05" class="social-link">
+                <div class="social-icon-wrapper">
+                    <span class="social-icon">✍️</span>
+                </div>
+                <span class="social-name">Medium</span>
+                <span class="social-handle">@Jammly</span>
+            </a>
+        </div>
+
+        <div class="response-note">
+            <h4>Response Time</h4>
+            <p>I typically respond to emails and messages within 24-48 hours during business days. For urgent matters, LinkedIn messages tend to get the fastest response.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/">LinkedIn</a>
+                <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979">Twitter</a>
+                <a href="mailto:wambohmuniu@gmail.com">Email</a>
+                <a href="MaryAnn_Muniu_Resume.pdf">Resume</a>
+            </div>
+            <div class="footer-text">© 2024 Maryann Muniu. Crafted with purpose.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        /*document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            */
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+            // Form submission works
+            // Example using fetch:
+            /*
+            const formData = new FormData(this);
+            fetch('your-endpoint-url', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                successMessage.classList.add('show');
+                this.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            */
+        });
+
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.availability-card, .social-link').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

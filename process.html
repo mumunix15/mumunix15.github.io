@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process - Product Manager Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: #FFED4E;
+        }
+
+        .nav-links a:hover {
+            color: #FFED4E;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFED4E;
+            transition: width 0.3s;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .process-hero {
+            padding: 180px 120px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #FFED4E;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        .process-hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .process-hero h1 .highlight {
+            color: #FFED4E;
+        }
+
+        .process-hero p {
+            font-size: 22px;
+            color: #999999;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            padding: 100px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .section-label {
+            color: #FFED4E;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .philosophy-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .philosophy-text p {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .principles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .principle-item {
+            background: #0a0a0a;
+            padding: 35px;
+            border-left: 3px solid #FFED4E;
+            transition: all 0.3s;
+        }
+
+        .principle-item:hover {
+            background: #0f0f0f;
+            transform: translateX(10px);
+        }
+
+        .principle-number {
+            font-size: 14px;
+            color: #FFED4E;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .principle-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .principle-description {
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        /* Process Steps Section */
+        .process-steps {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+        }
+
+        .process-steps h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .process-steps-subtitle {
+            font-size: 20px;
+            color: #999999;
+            margin-bottom: 80px;
+            max-width: 700px;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            padding: 60px 0;
+            border-top: 1px solid #1a1a1a;
+            transition: all 0.4s;
+        }
+
+        .step-item:last-child {
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .step-item:hover {
+            background: rgba(255, 237, 78, 0.02);
+            padding-left: 20px;
+        }
+
+        .step-number-wrapper {
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 96px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1;
+            letter-spacing: -3px;
+            transition: color 0.3s;
+        }
+
+        .step-item:hover .step-number {
+            color: #FFED4E;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            font-size: 13px;
+            color: #666666;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .step-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .step-description {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .step-activities {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: #999999;
+        }
+
+        .activity-icon {
+            color: #FFED4E;
+            font-size: 18px;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tools-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .tools-subtitle {
+            font-size: 20px;
+            color: #999999;
+            margin-bottom: 80px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .tool-category {
+            background: #0a0a0a;
+            padding: 40px;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s;
+        }
+
+        .tool-category:hover {
+            border-color: #FFED4E;
+            transform: translateY(-5px);
+        }
+
+        .tool-category-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #FFED4E;
+        }
+
+        .tool-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tool-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .tool-item:last-child {
+            border-bottom: none;
+        }
+
+        .tool-name {
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+
+        .tool-proficiency {
+            font-size: 12px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        /* Collaboration Section */
+        .collaboration-section {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+        }
+
+        .collaboration-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .collaboration-subtitle {
+            font-size: 20px;
+            color: #999999;
+            margin-bottom: 80px;
+        }
+
+        .collaboration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .collaboration-card {
+            background: #000000;
+            padding: 50px;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s;
+        }
+
+        .collaboration-card:hover {
+            border-color: #FFED4E;
+        }
+
+        .collaboration-icon {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .collaboration-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .collaboration-card p {
+            font-size: 16px;
+            color: #999999;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: #999999;
+            margin-bottom: 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: #FFED4E;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #FFED4E;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #FFED4E;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 120px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFED4E;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav, .process-hero, .philosophy-section, .process-steps, .tools-section, .collaboration-section, .cta-section, footer {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            .process-hero h1 {
+                font-size: 56px;
+            }
+
+            .philosophy-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .step-item {
+                grid-template-columns: 120px 1fr;
+                gap: 40px;
+            }
+
+            .step-number {
+                font-size: 64px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collaboration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .process-hero, .philosophy-section, .process-steps, .tools-section, .collaboration-section, .cta-section, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .process-hero {
+                padding-top: 140px;
+            }
+
+            .process-hero h1 {
+                font-size: 42px;
+            }
+
+            .process-hero p {
+                font-size: 18px;
+            }
+
+            .philosophy-text h2 {
+                font-size: 32px;
+            }
+
+            .process-steps h2,
+            .tools-section h2,
+            .collaboration-section h2,
+            .cta-section h2 {
+                font-size: 36px;
+            }
+
+            .step-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step-number {
+                font-size: 48px;
+            }
+
+            .step-content h3 {
+                font-size: 24px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html">Maryann Muniu</a></div>
+        <ul class="nav-links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="process.html" class="active">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="process-hero">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Process</span>
+        </div>
+        <h1 class="animate-in">How I Build <span class="highlight">Products That Matter</span></h1>
+        <p class="animate-in delay-1">A systematic approach to product development that combines strategic thinking, user research, and iterative design to deliver measurable business outcomes.</p>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="section-label animate-in">MY PHILOSOPHY</div>
+        <div class="philosophy-content">
+            <div class="philosophy-text animate-in delay-1">
+                <h2>Product management is about solving the right problems, not building features.</h2>
+                <p>I believe great products emerge from a deep understanding of user needs, business goals, and technical constraints. My approach centers on continuous discovery, rapid experimentation, and data-driven decision making.</p>
+                <p>Every product decision should ladder up to measurable impact—whether that's revenue growth, user satisfaction, or operational efficiency.</p>
+            </div>
+            <div class="principles-list animate-in delay-2">
+                <div class="principle-item">
+                    <div class="principle-number">01</div>
+                    <div class="principle-title">Start with Why</div>
+                    <div class="principle-description">Deeply understand the problem before jumping to solutions. Question assumptions and validate hypotheses.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-number">02</div>
+                    <div class="principle-title">Bias Toward Action</div>
+                    <div class="principle-description">Ship early and often. Learn from real users rather than endless planning and speculation.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-number">03</div>
+                    <div class="principle-title">Measure What Matters</div>
+                    <div class="principle-description">Define success metrics upfront. Let data guide decisions, but don't ignore qualitative insights.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-number">04</div>
+                    <div class="principle-title">Design for Scale</div>
+                    <div class="principle-description">Build products that work today but can grow tomorrow. Balance technical debt with speed to market.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="process-steps">
+        <h2>My Product Development Process</h2>
+        <p class="process-steps-subtitle">A flexible framework that adapts to each project's unique constraints while maintaining focus on user value and business impact.</p>
+        
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 01</span>
+                    <div class="step-number">01</div>
+                </div>
+                <div class="step-content">
+                    <h3>Discovery & Research</h3>
+                    <p class="step-description">Understanding the problem space through user research, market analysis, and stakeholder alignment. This phase ensures we're solving the right problem before investing in solutions.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>User interviews and contextual inquiry</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Competitive analysis and market research</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Stakeholder workshops and alignment sessions</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Opportunity sizing and business case development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 02</span>
+                    <div class="step-number">02</div>
+                </div>
+                <div class="step-content">
+                    <h3>Strategy & Prioritization</h3>
+                    <p class="step-description">Defining the product vision, setting clear objectives, and prioritizing initiatives based on impact and effort. This creates alignment across teams and ensures resources are focused on high-value opportunities.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Product vision and strategy documentation</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>OKR definition and success metrics</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Feature prioritization using RICE or ICE frameworks</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Roadmap development and communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 03</span>
+                    <div class="step-number">03</div>
+                </div>
+                <div class="step-content">
+                    <h3>Design & Validation</h3>
+                    <p class="step-description">Rapid prototyping and user testing to validate solutions before heavy engineering investment. This iterative approach reduces risk and ensures we're building something users actually want.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Wireframing and low-fidelity prototypes</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Usability testing and feedback sessions</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>High-fidelity design and interaction design</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Technical feasibility assessment with engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 04</span>
+                    <div class="step-number">04</div>
+                </div>
+                <div class="step-content">
+                    <h3>Build & Iterate</h3>
+                    <p class="step-description">Working closely with engineering to ship incrementally, gathering feedback, and iterating rapidly. Clear communication and realistic scope management ensure quality delivery.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Sprint planning and backlog grooming</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Daily standups and cross-functional collaboration</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Progressive rollout and feature flags</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>QA coordination and bug triage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 05</span>
+                    <div class="step-number">05</div>
+                </div>
+                <div class="step-content">
+                    <h3>Launch & Measure</h3>
+                    <p class="step-description">Coordinating go-to-market activities, monitoring key metrics, and gathering user feedback. Launch is just the beginning—continuous monitoring reveals opportunities for optimization.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Launch planning and stakeholder communication</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Analytics instrumentation and dashboard setup</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>A/B testing and experimentation</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Post-launch user interviews and surveys</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-item">
+                <div class="step-number-wrapper">
+                    <span class="step-label">PHASE 06</span>
+                    <div class="step-number">06</div>
+                </div>
+                <div class="step-content">
+                    <h3>Learn & Optimize</h3>
+                    <p class="step-description">Analyzing performance against goals, identifying areas for improvement, and feeding learnings back into the product cycle. Great products are never "done"—they evolve with user needs.</p>
+                    <div class="step-activities">
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Performance review against KPIs</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Retrospectives and team learnings</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Continuous optimization and iteration</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">→</span>
+                            <span>Documentation and knowledge sharing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <h2>Tools & Technologies</h2>
+        <p class="tools-subtitle">The stack I use to research, design, build, and measure products.</p>
+        
+        <div class="tools-grid">
+            <div class="tool-category">
+                <h3 class="tool-category-title">Product Management</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">Jira & Confluence</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Productboard</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Notion</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Airtable</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Miro</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="tool-category-title">Design & Prototyping</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">Figma</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Adobe XD</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Sketch</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Framer</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Principle</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="tool-category-title">Analytics & Research</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">Google Analytics</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Mixpanel</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Amplitude</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Hotjar</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">UserTesting</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="tool-category-title">Development</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">HTML/CSS</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">JavaScript</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">SQL</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Git/GitHub</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">APIs & Integrations</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="tool-category-title">Collaboration</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">Slack</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Zoom</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Google Workspace</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Loom</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Asana</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3 class="tool-category-title">Data & Experimentation</h3>
+                <div class="tool-list">
+                    <div class="tool-item">
+                        <span class="tool-name">Optimizely</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">LaunchDarkly</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Tableau</span>
+                        <span class="tool-proficiency">Intermediate</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">Excel/Google Sheets</span>
+                        <span class="tool-proficiency">Expert</span>
+                    </div>
+                    <div class="tool-item">
+                        <span class="tool-name">AB Tasty</span>
+                        <span class="tool-proficiency">Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration-section">
+        <h2>How I Collaborate</h2>
+        <p class="collaboration-subtitle">Product management is a team sport. Here's how I work with different functions to deliver great products.</p>
+        
+        <div class="collaboration-grid">
+            <div class="collaboration-card">
+                <div class="collaboration-icon">👥</div>
+                <h3>With Engineering</h3>
+                <p>I believe in partnership, not gatekeeping. I work closely with engineering to understand technical constraints, explore creative solutions, and make informed trade-offs. Clear requirements, realistic timelines, and open communication build trust and velocity.</p>
+            </div>
+
+            <div class="collaboration-card">
+                <div class="collaboration-icon">🎨</div>
+                <h3>With Design</h3>
+                <p>Great products need great design. I collaborate with designers from discovery through implementation, ensuring user needs drive visual and interaction decisions. I provide context and constraints while giving designers space to explore creative solutions.</p>
+            </div>
+
+            <div class="collaboration-card">
+                <div class="collaboration-icon">📊</div>
+                <h3>With Data/Analytics</h3>
+                <p>Data informs decisions but doesn't make them. I partner with analysts to define metrics, instrument tracking, and interpret results. I ask the right questions and challenge assumptions to ensure we're measuring what actually matters.</p>
+            </div>
+
+            <div class="collaboration-card">
+                <div class="collaboration-icon">💼</div>
+                <h3>With Business Stakeholders</h3>
+                <p>I translate between technical possibilities and business goals. Regular updates, clear roadmaps, and honest communication about trade-offs keep stakeholders aligned and confident. I advocate for users while respecting business constraints.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Let's Build Something Great</h2>
+        <p>Interested in working together or learning more about my approach?</p>
+        <a href="contact.html" class="cta-button">Get In Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text">© 2024 Maryann Muniu. Crafted with purpose.</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/">LinkedIn</a>
+                <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979">Twitter</a>
+                <a href="mailto:wambohmuniu@gmail.com">Email</a>
+                <a href="MaryAnn_Muniu_Resume.pdf">Resume</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu Decision Fatigue - Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFED4E;
+        }
+
+        /* Hero Section */
+        .case-study-hero {
+            padding: 180px 120px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #FFED4E;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero-description {
+            font-size: 22px;
+            color: #999999;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 60px;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 50px 0;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .metric-box {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Project Details */
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 60px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .detail-item h3 {
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .detail-item p {
+            font-size: 16px;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 100px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-label {
+            font-size: 13px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .content-text {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 237, 78, 0.05);
+            border-left: 3px solid #FFED4E;
+            padding: 30px 40px;
+            margin: 40px 0;
+        }
+
+        .highlight-box p {
+            font-size: 20px;
+            color: #FFFFFF;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .column h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FFED4E;
+        }
+
+        .column p, .column li {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.8;
+        }
+
+        .column ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .column li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .column li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #FFED4E;
+        }
+
+        /* Visual Comparison */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .comparison-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px;
+        }
+
+        .comparison-card h3 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-card.before h3 {
+            color: #FF4444;
+        }
+
+        .comparison-card.after h3 {
+            color: #44FF44;
+        }
+
+        .comparison-items {
+            list-style: none;
+        }
+
+        .comparison-items li {
+            padding: 15px 0;
+            border-bottom: 1px solid #1a1a1a;
+            color: #CCCCCC;
+            font-size: 15px;
+        }
+
+        .comparison-items li:last-child {
+            border-bottom: none;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 35px 30px;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            border-color: #FFED4E;
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #FFED4E;
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .process-step h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+        }
+
+        .stat-card .big-number {
+            font-size: 64px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+
+        .stat-card .stat-description {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.5;
+        }
+
+        /* Key Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .insight-card {
+            background: #0a0a0a;
+            border-left: 3px solid #FFED4E;
+            padding: 35px;
+        }
+
+        .insight-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #FFED4E;
+        }
+
+        .insight-card p {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.7;
+        }
+
+        /* Results Section */
+        .results-highlight {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a0a 100%);
+            border: 2px solid #FFED4E;
+            padding: 60px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .results-highlight h3 {
+            font-size: 32px;
+            color: #FFED4E;
+            margin-bottom: 20px;
+        }
+
+        .results-highlight p {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Next Project */
+        .next-project {
+            padding: 100px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .next-project-label {
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .next-project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 36px;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .next-project-link:hover {
+            color: #FFED4E;
+        }
+
+        .next-project-link .arrow {
+            transition: transform 0.3s;
+        }
+
+        .next-project-link:hover .arrow {
+            transform: translateX(10px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 120px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFED4E;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav, .case-study-hero, .project-details, .content-section, .next-project, footer {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .project-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .case-study-hero, .project-details, .content-section, .next-project, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .case-study-hero {
+                padding-top: 140px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column, .comparison-grid, .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html">Maryann Muniu</a></div>
+        <ul class="nav-links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="work.html" class="back-link">← Back to Work</a>
+        
+        <div class="project-tags">
+            <span class="tag">Consumer</span>
+            <span class="tag">Mobile App</span>
+            <span class="tag">UX Design</span>
+        </div>
+
+        <h1>Reducing Restaurant Menu Decision Fatigue by 60%</h1>
+        
+        <p class="hero-description">
+            How I redesigned the digital menu experience for The Urban Plate, a 15-location restaurant chain, to reduce cognitive load and increase order completion through strategic categorization and behavioral design principles.
+        </p>
+
+        <div class="hero-metrics">
+            <div class="metric-box">
+                <div class="metric-number">60%</div>
+                <div class="metric-label">Faster Menu Browsing</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-number">40%</div>
+                <div class="metric-label">Order Completion Increase</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-number">25%</div>
+                <div class="metric-label">Higher Average Order Value</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="detail-item">
+            <h3>Company</h3>
+            <p>The Urban Plate<br>Multi-location Restaurant Chain</p>
+        </div>
+        <div class="detail-item">
+            <h3>My Role</h3>
+            <p>Product Manager<br>Led end-to-end redesign</p>
+        </div>
+        <div class="detail-item">
+            <h3>Timeline</h3>
+            <p>6 months<br>Feb - Aug 2023</p>
+        </div>
+        <div class="detail-item">
+            <h3>Team</h3>
+            <p>2 Designers, 3 Engineers<br>1 Data Analyst, 1 UX Researcher</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="content-section">
+        <div class="section-label">01 — The Problem</div>
+        <h2>Customers Were Overwhelmed and Abandoning Orders</h2>
+        
+        <p class="content-text">
+            The Urban Plate had recently launched their mobile ordering app across all 15 locations, but the data told a concerning story. Despite strong initial downloads (12K+ in the first month), order completion rates were sitting at just 42%, well below the industry benchmark of 70%.
+        </p>
+
+        <p class="content-text">
+            Customer feedback revealed a pattern: users felt overwhelmed by the sheer number of choices presented all at once. With 120+ menu items spanning breakfast, lunch, dinner, drinks, and desserts, customers were experiencing classic decision paralysis.
+        </p>
+
+        <div class="highlight-box">
+            <p>"I spent 10 minutes scrolling through the menu and still couldn't decide what I wanted. I just gave up and ordered from somewhere else." — User Interview Participant #7</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="big-number">42%</div>
+                <div class="stat-description">Order completion rate (baseline)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">8.2min</div>
+                <div class="stat-description">Average browsing time before abandonment</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">58%</div>
+                <div class="stat-description">Users who abandoned without adding items</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="content-section">
+        <div class="section-label">02 — Research & Discovery</div>
+        <h2>Understanding the Decision-Making Process</h2>
+        
+        <p class="content-text">
+            I led a comprehensive research initiative to understand why users were struggling with menu navigation. We combined quantitative analytics with qualitative user research to get a complete picture.
+        </p>
+
+        <div class="two-column">
+            <div class="column">
+                <h3>Research Methods</h3>
+                <ul>
+                    <li>15 in-person user interviews with regular customers</li>
+                    <li>Analytics review of 5,000+ user sessions</li>
+                    <li>Competitive analysis of 8 restaurant apps</li>
+                    <li>A/B testing of 3 navigation patterns</li>
+                    <li>Eye-tracking studies with 10 participants</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Key Research Questions</h3>
+                <ul>
+                    <li>How do users naturally categorize menu items in their minds?</li>
+                    <li>What triggers decision fatigue during menu browsing?</li>
+                    <li>Which information hierarchy reduces cognitive load?</li>
+                    <li>How can we guide users without restricting choice?</li>
+                    <li>What role does visual design play in decision-making?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card">
+                <h3>Insight 1: Contextual Thinking</h3>
+                <p>Users mentally categorized items by meal occasion (breakfast, lunch, dinner) before considering food type. Our menu prioritized food categories (salads, sandwiches, etc.) which didn't match their mental model.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Insight 2: Paradox of Choice</h3>
+                <p>Presenting all 120 items simultaneously created analysis paralysis. Users who saw filtered subsets (20-30 items) made decisions 3x faster.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Insight 3: Visual Overload</h3>
+                <p>Every item had an image, creating visual clutter. Users spent more time processing images than reading descriptions, leading to slower decisions.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Insight 4: Missing Guidance</h3>
+                <p>First-time users wanted recommendations or popular items highlighted. Without social proof or curation, they felt lost in the options.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="content-section">
+        <div class="section-label">03 — The Solution</div>
+        <h2>A Smarter Menu Architecture Built on Behavioral Science</h2>
+        
+        <p class="content-text">
+            Based on our research insights, I designed a new menu experience that reduced cognitive load through progressive disclosure, smart categorization, and strategic visual hierarchy. The solution balanced freedom of choice with guided discovery.
+        </p>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3>Context-First Navigation</h3>
+                <p>Users first select their meal occasion (breakfast, lunch, dinner), immediately reducing visible items by 60-70%.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3>Smart Categorization</h3>
+                <p>Within each meal, items grouped by preparation time, dietary preferences, and popularity rather than traditional food categories.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3>Curated Collections</h3>
+                <p>Featured sections like "Staff Favorites," "Quick Bites," and "Customer Top 10" provide decision shortcuts for uncertain users.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3>Progressive Visual Reveal</h3>
+                <p>Item images shown only on detail view, keeping the browse experience clean while still providing visual confirmation before ordering.</p>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card before">
+                <h3>Before: Old Menu Structure</h3>
+                <ul class="comparison-items">
+                    <li>120 items displayed simultaneously</li>
+                    <li>Generic categories (Salads, Sandwiches, etc.)</li>
+                    <li>All items had equal visual weight</li>
+                    <li>No personalization or recommendations</li>
+                    <li>Infinite scroll with no clear sections</li>
+                    <li>Images for every single item</li>
+                </ul>
+            </div>
+            <div class="comparison-card after">
+                <h3>After: New Menu Structure</h3>
+                <ul class="comparison-items">
+                    <li>20-35 contextually relevant items per view</li>
+                    <li>Occasion-based navigation (Breakfast, Lunch, etc.)</li>
+                    <li>Featured collections prominently displayed</li>
+                    <li>Smart recommendations based on preferences</li>
+                    <li>Clear sectioning with quick-jump navigation</li>
+                    <li>Strategic imagery only where needed</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Decisions Section -->
+    <section class="content-section">
+        <div class="section-label">04 — Key Design Decisions</div>
+        <h2>Balancing Business Goals with User Needs</h2>
+        
+        <p class="content-text">
+            Every design decision involved careful consideration of both user experience and business objectives. Here's how I navigated key trade-offs throughout the project.
+        </p>
+
+        <div class="two-column">
+            <div class="column">
+                <h3>Decision 1: Limiting Initial Choices</h3>
+                <p>
+                    <strong>Challenge:</strong> Business stakeholders worried that hiding items would reduce discoverability of the full menu.<br><br>
+                    <strong>Solution:</strong> I demonstrated through A/B testing that users exposed to 30 items had 3x higher order completion than those seeing 120 items, even though they explored fewer total items. Revenue per completed order was actually higher in the limited view.<br><br>
+                    <strong>Result:</strong> Stakeholders approved the contextual filtering approach.
+                </p>
+            </div>
+            <div class="column">
+                <h3>Decision 2: Image Strategy</h3>
+                <p>
+                    <strong>Challenge:</strong> Marketing team invested heavily in professional food photography and wanted every item showcased.<br><br>
+                    <strong>Solution:</strong> I proposed using images strategically in featured sections and detail views while keeping the browse experience text-focused. Eye-tracking data showed users spent 70% more time processing images than reading descriptions.<br><br>
+                    <strong>Result:</strong> Faster browsing without sacrificing visual appeal.
+                </p>
+            </div>
+        </div>
+
+        <div class="two-column" style="margin-top: 40px;">
+            <div class="column">
+                <h3>Decision 3: Personalization Level</h3>
+                <p>
+                    <strong>Challenge:</strong> How much personalization without being creepy or limiting serendipitous discovery?<br><br>
+                    <strong>Solution:</strong> Implemented lightweight personalization: "Based on your previous orders" section limited to 4 items, with a clear "View All" option. No algorithmic hiding of items.<br><br>
+                    <strong>Result:</strong> 35% of repeat customers used personalized recommendations without feeling restricted.
+                </p>
+            </div>
+            <div class="column">
+                <h3>Decision 4: Dietary Filters</h3>
+                <p>
+                    <strong>Challenge:</strong> Users with dietary restrictions needed easy filtering but most users didn't want extra UI complexity.<br><br>
+                    <strong>Solution:</strong> Made dietary badges subtle but visible on all items, with optional filter toggle in navigation. Filters persisted across sessions for users who activated them.<br><br>
+                    <strong>Result:</strong> 15% of users activated filters, giving them a tailored experience without cluttering the default view.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section class="content-section">
+        <div class="section-label">05 — Implementation & Testing</div>
+        <h2>Rolling Out Changes with Data-Driven Validation</h2>
+        
+        <p class="content-text">
+            Rather than a big-bang launch, I advocated for a phased rollout that allowed us to validate assumptions and iterate based on real user behavior. This approach reduced risk while building stakeholder confidence.
+        </p>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3>Prototype Testing</h3>
+                <p>Interactive prototypes tested with 25 users across 3 locations. Gathered feedback on navigation patterns and information hierarchy.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3>Beta Launch</h3>
+                <p>Released to 10% of users (1,200 people) in 2 pilot locations. Monitored metrics daily and conducted 5 user interviews per week.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3>Iteration Phase</h3>
+                <p>Made 12 refinements based on beta feedback, including adjusting featured section prominence and refining dietary filter UX.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3>Full Rollout</h3>
+                <p>Gradually expanded to 100% of users over 4 weeks, monitoring key metrics at each stage to ensure consistent improvements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="content-section">
+        <div class="section-label">06 — Results & Impact</div>
+        <h2>Measurable Improvements Across All Key Metrics</h2>
+        
+        <p class="content-text">
+            The redesigned menu experience exceeded our initial goals, delivering significant improvements in user experience metrics and business outcomes. Here's what we achieved after 3 months post-launch.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="big-number">82%</div>
+                <div class="stat-description">Order completion rate (up from 42%)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">3.2min</div>
+                <div class="stat-description">Average browsing time (down from 8.2min)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">25%</div>
+                <div class="stat-description">Increase in average order value</div>
+            </div>
+        </div>
+
+        <div class="results-highlight">
+            <h3>Business Impact</h3>
+            <p>
+                The menu redesign generated an estimated $2.4M in additional annual revenue across all locations through improved conversion rates and higher order values. Customer satisfaction scores for the app increased from 3.2 to 4.6 stars, and daily active users grew by 45%.
+            </p>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card">
+                <h3>User Satisfaction</h3>
+                <p>Post-launch surveys showed 89% of users found the new menu "easier to navigate" and 76% said they felt "less overwhelmed" when browsing options.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Repeat Usage</h3>
+                <p>Weekly active users increased by 52%, and the average customer placed 2.3 orders per month compared to 1.4 orders before the redesign.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Featured Collections</h3>
+                <p>43% of orders included at least one item from featured sections, validating the curation strategy and reducing decision paralysis.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Operational Efficiency</h3>
+                <p>Support tickets related to app navigation decreased by 67%, freeing up customer service resources for other priorities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learnings Section -->
+    <section class="content-section">
+        <div class="section-label">07 — Key Learnings</div>
+        <h2>What I'd Do Differently Next Time</h2>
+        
+        <p class="content-text">
+            Every project teaches valuable lessons. Here are the key insights I gained from this experience that I'll carry forward to future work.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                The most important lesson: Start with understanding how users naturally think about the problem space, not how your business categorizes it. Our breakthrough came when we stopped organizing by food types and started organizing by meal occasions.
+            </p>
+        </div>
+
+        <div class="two-column">
+            <div class="column">
+                <h3>What Worked Well</h3>
+                <ul>
+                    <li>Grounding design decisions in behavioral science research</li>
+                    <li>Phased rollout that allowed for iteration</li>
+                    <li>Strong partnership with data analyst for metric tracking</li>
+                    <li>Regular stakeholder updates with quantitative results</li>
+                    <li>Balancing user needs with business constraints</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>What I'd Improve</h3>
+                <ul>
+                    <li>Start user research earlier in the ideation phase</li>
+                    <li>Build more sophisticated personalization algorithms</li>
+                    <li>Test with more diverse user segments initially</li>
+                    <li>Document decision rationale more thoroughly</li>
+                    <li>Create better handoff documentation for engineers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <div class="next-project-label">Next Project</div>
+        <a href="Case-study-2.html" class="next-project-link">
+            <span>Building a Self-Service Analytics Platform for 10K+ Users</span>
+            <span class="arrow">→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/">LinkedIn</a>
+                <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979">Twitter</a>
+                <a href="mailto:wambohmuniu@gmail.com">Email</a>
+                <a href="MaryAnn_Muniu_Resume.pdf">Resume</a>
+            </div>
+            <div class="footer-text">© 2024 Maryann Muniu. Crafted with purpose.</div>
+        </div>
+    </footer>
+
+</body>
+</html>

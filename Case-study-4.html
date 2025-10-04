@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reducing Cart Abandonment by 34% - Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFED4E;
+        }
+
+        /* Hero Section */
+        .case-study-hero {
+            padding: 180px 120px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #FFED4E;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            background: rgba(255, 237, 78, 0.1);
+            border: 1px solid rgba(255, 237, 78, 0.3);
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero-description {
+            font-size: 22px;
+            color: #999999;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 60px;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 50px 0;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .metric-box {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 10px;
+            letter-spacing: -1.5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Project Details */
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 60px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .detail-item h3 {
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .detail-item p {
+            font-size: 16px;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 100px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-label {
+            font-size: 13px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .content-text {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 237, 78, 0.05);
+            border-left: 3px solid #FFED4E;
+            padding: 30px 40px;
+            margin: 40px 0;
+        }
+
+        .highlight-box p {
+            font-size: 20px;
+            color: #FFFFFF;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .column h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FFED4E;
+        }
+
+        .column p, .column li {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.8;
+        }
+
+        .column ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .column li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .column li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #FFED4E;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+        }
+
+        .stat-card .big-number {
+            font-size: 64px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+
+        .stat-card .stat-description {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.5;
+        }
+
+        /* Key Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .insight-card {
+            background: #0a0a0a;
+            border-left: 3px solid #FFED4E;
+            padding: 35px;
+        }
+
+        .insight-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #FFED4E;
+        }
+
+        .insight-card p {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.7;
+        }
+
+        /* Friction Points */
+        .friction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .friction-card {
+            background: #0a0a0a;
+            border: 1px solid #FF4444;
+            padding: 35px;
+            position: relative;
+        }
+
+        .friction-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .friction-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #FF6666;
+        }
+
+        .friction-card p {
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.7;
+        }
+
+        .friction-stat {
+            font-size: 32px;
+            font-weight: 700;
+            color: #FF4444;
+            margin-top: 15px;
+        }
+
+        /* Solution Cards */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .solution-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            border-color: #FFED4E;
+            transform: translateY(-5px);
+        }
+
+        .solution-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .solution-card h3 {
+            font-size: 22px;
+            color: #FFFFFF;
+        }
+
+        .solution-impact {
+            font-size: 24px;
+            font-weight: 700;
+            color: #44FF44;
+        }
+
+        .solution-card .problem {
+            font-size: 15px;
+            color: #FF6666;
+            margin-bottom: 15px;
+        }
+
+        .solution-card .fix {
+            font-size: 15px;
+            color: #CCCCCC;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .solution-card .result {
+            font-size: 15px;
+            color: #44FF44;
+            font-weight: 600;
+        }
+
+        /* Before/After Comparison */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .comparison-side {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px;
+        }
+
+        .comparison-side h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .comparison-side.before h3 {
+            color: #FF4444;
+            border-bottom-color: #FF4444;
+        }
+
+        .comparison-side.after h3 {
+            color: #44FF44;
+            border-bottom-color: #44FF44;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #1a1a1a;
+            color: #CCCCCC;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* A/B Testing Results */
+        .ab-test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .ab-test-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .test-label {
+            font-size: 13px;
+            color: #FFED4E;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .test-metric {
+            font-size: 48px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .test-description {
+            font-size: 14px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        .winner-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #44FF44;
+            color: #000000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        /* Results Section */
+        .results-highlight {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a0a 100%);
+            border: 2px solid #FFED4E;
+            padding: 60px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .results-highlight h3 {
+            font-size: 32px;
+            color: #FFED4E;
+            margin-bottom: 20px;
+        }
+
+        .results-highlight p {
+            font-size: 18px;
+            color: #CCCCCC;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a1a1a;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #FFED4E;
+            border: 3px solid #000000;
+        }
+
+        .timeline-phase {
+            font-size: 13px;
+            color: #FFED4E;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .timeline-item p {
+            font-size: 16px;
+            color: #999999;
+            line-height: 1.7;
+        }
+
+        /* Mobile Optimization */
+        .mobile-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            padding: 40px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+        }
+
+        .mobile-stat {
+            text-align: center;
+        }
+
+        .mobile-stat .number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #FFED4E;
+            margin-bottom: 10px;
+        }
+
+        .mobile-stat .label {
+            font-size: 14px;
+            color: #999999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Next Project */
+        .next-project {
+            padding: 100px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .next-project-label {
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .next-project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 36px;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        .next-project-link:hover {
+            color: #FFED4E;
+        }
+
+        .next-project-link .arrow {
+            transition: transform 0.3s;
+        }
+
+        .next-project-link:hover .arrow {
+            transform: translateX(10px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 120px;
+            border-top: 1px solid #1a1a1a;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFED4E;
+        }
+
+        .footer-text {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav, .case-study-hero, .project-details, .content-section, .next-project, footer {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .project-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .friction-grid, .ab-test-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .case-study-hero, .project-details, .content-section, .next-project, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .case-study-hero {
+                padding-top: 140px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column, .comparison-container, .solution-grid, .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .friction-grid, .ab-test-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid, .mobile-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html">Maryann Muniu</a></div>
+        <ul class="nav-links">
+            <li><a href="work.html">Work</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="work.html" class="back-link">← Back to Work</a>
+        
+        <div class="project-tags">
+            <span class="tag">E-commerce</span>
+            <span class="tag">Web Platform</span>
+            <span class="tag">CRO</span>
+        </div>
+
+        <h1>Reducing Cart Abandonment by 34% Through Checkout Optimization</h1>
+        
+        <p class="hero-description">
+            How I overhauled the checkout experience for Verde Home, a D2C sustainable home goods brand, eliminating friction points and building trust at critical conversion moments to drive $800K in additional revenue.
+        </p>
+
+        <div class="hero-metrics">
+            <div class="metric-box">
+                <div class="metric-number">34%</div>
+                <div class="metric-label">Reduction in Cart Abandonment</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-number">18%</div>
+                <div class="metric-label">Revenue Increase</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-number">$800K</div>
+                <div class="metric-label">Additional Annual Value</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="detail-item">
+            <h3>Company</h3>
+            <p>Verde Home<br>D2C Home Goods Brand</p>
+        </div>
+        <div class="detail-item">
+            <h3>My Role</h3>
+            <p>Product Manager<br>Led Checkout Redesign</p>
+        </div>
+        <div class="detail-item">
+            <h3>Timeline</h3>
+            <p>5 months<br>Sep 2022 - Feb 2023</p>
+        </div>
+        <div class="detail-item">
+            <h3>Team</h3>
+            <p>2 Engineers, 1 Designer<br>1 Data Analyst, 1 CRO Specialist</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="content-section">
+        <div class="section-label">01 — The Problem</div>
+        <h2>68% of Carts Were Being Abandoned at Checkout</h2>
+        
+        <p class="content-text">
+            Verde Home had grown to $5M in annual revenue through strong product-market fit and effective marketing. Traffic was healthy, add-to-cart rates were above industry benchmarks, but there was a massive leak in the funnel: 68% of users who added items to cart never completed their purchase.
+        </p>
+
+        <p class="content-text">
+            This wasn't just a UX problem—it was a business crisis. With an average cart value of $120, we were losing approximately $800K in potential annual revenue to checkout abandonment. Competitors in the sustainable home goods space had abandonment rates around 45-50%, meaning we were significantly underperforming the category benchmark.
+        </p>
+
+        <div class="highlight-box">
+            <p>"I loved the products, but when I got to checkout, I saw unexpected shipping costs and wasn't sure if I could trust entering my credit card. I abandoned and bought from a competitor instead." — Exit Survey Response</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="big-number">68%</div>
+                <div class="stat-description">Cart abandonment rate (baseline)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">$800K</div>
+                <div class="stat-description">Estimated annual revenue loss</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">$120</div>
+                <div class="stat-description">Average cart value</div>
+            </div>
+        </stats-grid>
+
+        <p class="content-text" style="margin-top: 50px;">
+            The founder was considering expensive paid advertising to compensate for the leaky funnel. I argued that fixing checkout would be far more cost-effective than pouring money into acquisition while hemorrhaging customers at the final step. We needed to diagnose exactly where and why users were abandoning.
+        </p>
+    </section>
+
+    <!-- Research Section -->
+    <section class="content-section">
+        <div class="section-label">02 — Diagnosing the Friction Points</div>
+        <h2>Data-Driven Discovery of Conversion Killers</h2>
+        
+        <p class="content-text">
+            I led a comprehensive analysis combining quantitative funnel analytics, user session recordings, and qualitative user research to identify specific moments where users were dropping off and why.
+        </p>
+
+        <div class="two-column">
+            <div class="column">
+                <h3>Research Methods</h3>
+                <ul>
+                    <li>Analyzed 10,000+ checkout sessions over 90 days</li>
+                    <li>Watched 200+ session recordings of abandoned checkouts</li>
+                    <li>Exit surveys with 500+ abandoning users</li>
+                    <li>Competitive checkout analysis of 8 D2C brands</li>
+                    <li>User testing with 15 participants (think-aloud protocol)</li>
+                    <li>Heatmap analysis on checkout pages</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Key Questions</h3>
+                <ul>
+                    <li>At what exact step do users abandon most?</li>
+                    <li>What triggers hesitation or distrust?</li>
+                    <li>Are there technical errors causing failures?</li>
+                    <li>How does mobile vs. desktop performance compare?</li>
+                    <li>What trust signals are missing?</li>
+                    <li>How do shipping costs impact completion?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="friction-grid">
+            <div class="friction-card">
+                <div class="friction-icon">🚢</div>
+                <h3>Surprise Shipping Costs</h3>
+                <p>Shipping costs only revealed at final checkout step. 42% of abandonments occurred immediately after seeing shipping.</p>
+                <div class="friction-stat">42%</div>
+            </div>
+            <div class="friction-card">
+                <div class="friction-icon">📱</div>
+                <h3>Mobile Form Friction</h3>
+                <p>Mobile checkout required 23 form fields. Users struggled with small inputs, auto-complete failures, and keyboard issues.</p>
+                <div class="friction-stat">57%</div>
+            </div>
+            <div class="friction-card">
+                <div class="friction-icon">🔒</div>
+                <h3>Trust Deficit</h3>
+                <p>No visible security badges or trust signals. 35% of users cited "didn't feel safe" in exit surveys.</p>
+                <div class="friction-stat">35%</div>
+            </div>
+            <div class="friction-card">
+                <div class="friction-icon">⏱️</div>
+                <h3>Long Multi-Step Process</h3>
+                <p>5-step checkout process felt endless. Users abandoned mid-flow not knowing how many steps remained.</p>
+                <div class="friction-stat">28%</div>
+            </div>
+            <div class="friction-card">
+                <div class="friction-icon">❌</div>
+                <h3>Guest Checkout Buried</h3>
+                <p>Forced account creation or hidden guest option. Users who wanted to "just buy" got frustrated.</p>
+                <div class="friction-stat">31%</div>
+            </div>
+            <div class="friction-card">
+                <div class="friction-icon">💳</div>
+                <h3>Limited Payment Options</h3>
+                <p>Only credit cards accepted. No PayPal, Apple Pay, or buy-now-pay-later options that users expected.</p>
+                <div class="friction-stat">19%</div>
+            </div>
+        </div>
+
+        <div class="insights-grid" style="margin-top: 50px;">
+            <div class="insight-card">
+                <h3>Mobile Commerce is Critical</h3>
+                <p>58% of traffic came from mobile devices, but mobile conversion was 40% lower than desktop. The checkout experience was clearly not optimized for small screens, creating massive revenue leakage.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Transparency Builds Trust</h3>
+                <p>Users wanted to know total costs upfront. Surprise fees at the end felt like a "bait and switch" that destroyed trust and triggered immediate abandonment.</p>
+            </div>
+            <div class="insight-card">
+                <h3>Progress Visibility Matters</h3>
+                <p>Users couldn't see how many steps remained or how far they'd progressed. This uncertainty created anxiety and increased abandonment rates. Clear progress indicators would set expectations.</p>
+            </div>
+            <div class="insight-card">
+                <h3>One-Click Options Win</h3>
+                <p>Users familiar with Amazon's one-click or Apple Pay expected frictionless payment. Our traditional form-heavy checkout felt outdated and cumbersome by comparison.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="content-section">
+        <div class="section-label">03 — The Solution</div>
+        <h2>A Frictionless, Trust-Building Checkout Experience</h2>
+        
+        <p class="content-text">
+            Rather than minor tweaks, I proposed a comprehensive checkout redesign addressing all major friction points simultaneously. The solution balanced speed (fewer steps) with transparency (clear information) while maintaining mobile-first design principles.
+        </p>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>1. Upfront Shipping Calculator</h3>
+                    <div class="solution-impact">+12%</div>
+                </div>
+                <p class="problem">❌ Shipping costs hidden until final step caused 42% of abandonments</p>
+                <p class="fix">✓ Added shipping calculator on cart page. Users enter ZIP code to see exact shipping cost before starting checkout. Free shipping threshold prominently displayed.</p>
+                <p class="result">Result: 12% increase in users proceeding to checkout, near-elimination of shipping surprise abandonments</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>2. Single-Page Checkout</h3>
+                    <div class="solution-impact">+19%</div>
+                </div>
+                <p class="problem">❌ 5-step process with page loads between each step created abandonment points</p>
+                <p class="fix">✓ Consolidated to single-page checkout with progressive disclosure. All information visible at once, forms expand as needed. No page reloads = no abandonment between steps.</p>
+                <p class="result">Result: 19% reduction in mid-checkout abandonment, 40% faster completion time</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>3. Express Payment Options</h3>
+                    <div class="solution-impact">+15%</div>
+                </div>
+                <p class="problem">❌ Only traditional credit card forms, no modern payment methods</p>
+                <p class="fix">✓ Added Apple Pay, Google Pay, PayPal, and Afterpay (BNPL). Express checkout buttons prominently placed at top, bypassing entire form for returning users.</p>
+                <p class="result">Result: 15% of transactions now use express checkout, 28% faster average completion</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>4. Mobile-Optimized Forms</h3>
+                    <div class="solution-impact">+24%</div>
+                </div>
+                <p class="problem">❌ 23 form fields with poor mobile UX, 40% lower mobile conversion</p>
+                <p class="fix">✓ Reduced to 11 essential fields, auto-fill enabled, large touch targets, appropriate keyboards (numeric for ZIP, email for email). Address lookup integration reduced typing by 60%.</p>
+                <p class="result">Result: 24% increase in mobile conversion, eliminated mobile/desktop conversion gap</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>5. Trust Signal Integration</h3>
+                    <div class="solution-impact">+8%</div>
+                </div>
+                <p class="problem">❌ No security badges, 35% cited "didn't feel safe" in surveys</p>
+                <p class="fix">✓ Added SSL badges, secure checkout icons, money-back guarantee, customer reviews snippet, "30-day returns" messaging. Made security visible without cluttering design.</p>
+                <p class="result">Result: 8% increase in completion, "security concerns" dropped from 35% to 9% in exit surveys</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>6. Guest Checkout Default</h3>
+                    <div class="solution-impact">+11%</div>
+                </div>
+                <p class="problem">❌ Account creation required or poorly communicated guest option</p>
+                <p class="fix">✓ Made guest checkout the default path. Account creation offered after purchase with incentive (10% off next order). Removed friction from first-time buyers.</p>
+                <p class="result">Result: 11% increase in first-time buyer conversion, 22% of guest users create account post-purchase</p>
+            </div>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-side before">
+                <h3>❌ Before: Old Checkout Flow</h3>
+                <ul class="comparison-list">
+                    <li>5 separate pages with full page reloads</li>
+                    <li>Shipping costs revealed only at final step</li>
+                    <li>23 form fields required</li>
+                    <li>Account creation forced or hidden guest option</li>
+                    <li>Credit cards only</li>
+                    <li>No progress indicator</li>
+                    <li>Generic error messages</li>
+                    <li>No trust badges or security signals</li>
+                    <li>Average completion time: 4.2 minutes</li>
+                    <li>Mobile abandonment: 71%</li>
+                </ul>
+            </div>
+            <div class="comparison-side after">
+                <h3>✓ After: Optimized Checkout Flow</h3>
+                <ul class="comparison-list">
+                    <li>Single-page checkout with progressive disclosure</li>
+                    <li>Shipping calculator on cart page (pre-checkout)</li>
+                    <li>11 essential fields with smart auto-fill</li>
+                    <li>Guest checkout default with post-purchase account offer</li>
+                    <li>Apple Pay, Google Pay, PayPal, Afterpay options</li>
+                    <li>Clear progress bar and section indicators</li>
+                    <li>Specific, actionable error messages with fix suggestions</li>
+                    <li>SSL badges, reviews, money-back guarantee visible</li>
+                    <li>Average completion time: 2.1 minutes</li>
+                    <li>Mobile abandonment: 47%</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- A/B Testing Section -->
+    <section class="content-section">
+        <div class="section-label">04 — Rigorous Testing & Validation</div>
+        <h2>Data-Driven Optimization Through A/B Testing</h2>
+        
+        <p class="content-text">
+            Rather than launching everything at once, I designed a phased testing approach where we validated each major change independently before combining them. This allowed us to isolate impact and build confidence with stakeholders.
+        </p>
+
+        <div class="ab-test-grid">
+            <div class="ab-test-card">
+                <div class="test-label">Test 1: Shipping Calculator</div>
+                <div class="test-metric">+8.2%</div>
+                <p class="test-description">Cart-to-checkout progression improved when users could see shipping costs upfront</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+            <div class="ab-test-card">
+                <div class="test-label">Test 2: Single vs Multi-Page</div>
+                <div class="test-metric">+14.7%</div>
+                <p class="test-description">Single-page checkout significantly reduced abandonment vs. 5-step flow</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+            <div class="ab-test-card">
+                <div class="test-label">Test 3: Express Payments</div>
+                <div class="test-metric">+11.3%</div>
+                <p class="test-description">Apple Pay/PayPal options increased overall conversion and reduced completion time</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+            <div class="ab-test-card">
+                <div class="test-label">Test 4: Form Field Reduction</div>
+                <div class="test-metric">+9.8%</div>
+                <p class="test-description">Reducing fields from 23 to 11 improved mobile conversion dramatically</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+            <div class="ab-test-card">
+                <div class="test-label">Test 5: Trust Badges</div>
+                <div class="test-metric">+5.4%</div>
+                <p class="test-description">Security and guarantee badges reduced hesitation for first-time buyers</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+            <div class="ab-test-card">
+                <div class="test-label">Test 6: Guest Checkout</div>
+                <div class="test-metric">+7.9%</div>
+                <p class="test-description">Making guest checkout default removed friction for new customers</p>
+                <span class="winner-badge">Statistical Winner</span>
+            </div>
+        </div>
+
+        <div class="two-column" style="margin-top: 50px;">
+            <div class="column">
+                <h3>Testing Methodology</h3>
+                <ul>
+                    <li>Each test ran for minimum 2 weeks or 1,000 conversions</li>
+                    <li>95% confidence threshold for statistical significance</li>
+                    <li>Monitored both primary (conversion) and secondary metrics</li>
+                    <li>Qualitative feedback collected via user testing</li>
+                    <li>Mobile and desktop analyzed separately</li>
+                    <li>Combined winning variants in final rollout</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Key Learnings</h3>
+                <ul>
+                    <li>Single-page checkout had biggest individual impact (+14.7%)</li>
+                    <li>Mobile optimizations disproportionately improved overall metrics</li>
+                    <li>Trust signals mattered more for new vs. returning customers</li>
+                    <li>Express payments most popular with 25-40 age demographic</li>
+                    <li>Combined effect (34%) exceeded sum of individual tests</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section class="content-section">
+        <div class="section-label">05 — Implementation Journey</div>
+        <h2>From Concept to 34% Improvement</h2>
+        
+        <p class="content-text">
+            Implementation required careful coordination across engineering, design, and business teams. We prioritized quick wins first while building toward the comprehensive solution.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-phase">Month 1: Discovery & Analysis</div>
+                <h3>Problem Validation</h3>
+                <p>Conducted comprehensive funnel analysis, session recording review, user interviews, and competitive research. Built business case showing $800K revenue opportunity. Secured executive buy-in and budget for redesign.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">Month 2: Quick Wins</div>
+                <h3>Low-Hanging Fruit</h3>
+                <p>Implemented shipping calculator on cart page and added trust badges to checkout. These quick fixes achieved 11% abandonment reduction immediately, building momentum and stakeholder confidence for larger changes.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">Month 3: Design & Prototyping</div>
+                <h3>Comprehensive Redesign</h3>
+                <p>Designer created high-fidelity prototypes of single-page checkout. Conducted user testing with 15 participants, iterated based on feedback. Finalized mobile-first design specifications and technical requirements.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">Month 4: Development & Testing</div>
+                <h3>Build & Validate</h3>
+                <p>Engineering team built new checkout experience with express payment integrations. Ran 6 separate A/B tests validating each major component. Iteratively combined winning variants into final experience.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-phase">Month 5: Rollout & Optimization</div>
+                <h3>Launch & Iterate</h3>
+                <p>Phased rollout starting with 10% of traffic, gradually increasing to 100%. Monitored metrics daily, addressed edge cases and bugs. Final results: 34% abandonment reduction, 18% revenue increase, $800K added annual value.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Optimization Section -->
+    <section class="content-section">
+        <div class="section-label">06 — Mobile-First Impact</div>
+        <h2>Closing the Mobile Conversion Gap</h2>
+        
+        <p class="content-text">
+            Mobile represented 58% of traffic but had historically converted 40% worse than desktop. Our mobile-first redesign eliminated this gap, effectively unlocking a hidden revenue stream.
+        </p>
+
+        <div class="mobile-stats">
+            <div class="mobile-stat">
+                <div class="number">71% → 47%</div>
+                <div class="label">Mobile Abandonment</div>
+            </div>
+            <div class="mobile-stat">
+                <div class="number">24%</div>
+                <div class="label">Mobile Conv. Increase</div>
+            </div>
+            <div class="mobile-stat">
+                <div class="number">4.2 → 2.1</div>
+                <div class="label">Minutes to Complete</div>
+            </div>
+            <div class="mobile-stat">
+                <div class="number">58%</div>
+                <div class="label">Traffic from Mobile</div>
+            </div>
+        </div>
+
+        <div class="two-column" style="margin-top: 50px;">
+            <div class="column">
+                <h3>Mobile-Specific Optimizations</h3>
+                <ul>
+                    <li>Touch targets minimum 44x44 pixels for easy tapping</li>
+                    <li>Numeric keyboards for ZIP/phone, email keyboard for email</li>
+                    <li>Address autocomplete reduced typing by 60%</li>
+                    <li>Minimal scrolling required - key info above fold</li>
+                    <li>Apple Pay/Google Pay one-tap on mobile devices</li>
+                    <li>Sticky "Complete Order" button always visible</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Impact by Device</h3>
+                <ul>
+                    <li>iOS users: 68% abandonment → 43% (37% improvement)</li>
+                    <li>Android users: 74% abandonment → 51% (31% improvement)</li>
+                    <li>Desktop users: 52% abandonment → 38% (27% improvement)</li>
+                    <li>Tablet users: 59% abandonment → 42% (29% improvement)</li>
+                    <li>Mobile now converts equally to desktop</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="content-section">
+        <div class="section-label">07 — Business Impact & Results</div>
+        <h2>$800K in Additional Revenue from Conversion Optimization</h2>
+        
+        <p class="content-text">
+            The checkout redesign delivered immediate and sustained business impact, proving that fixing the funnel was far more cost-effective than increasing acquisition spend.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="big-number">34%</div>
+                <div class="stat-description">Reduction in cart abandonment (68% → 45%)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">18%</div>
+                <div class="stat-description">Overall revenue increase</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">$800K</div>
+                <div class="stat-description">Additional annual revenue</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">2.1min</div>
+                <div class="stat-description">Average checkout time (down from 4.2min)</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">24%</div>
+                <div class="stat-description">Mobile conversion improvement</div>
+            </div>
+            <div class="stat-card">
+                <div class="big-number">15%</div>
+                <div class="stat-description">Transactions via express checkout</div>
+            </div>
+        </div>
+
+        <div class="results-highlight">
+            <h3>ROI: 40x Return on Investment</h3>
+            <p>
+                The checkout redesign cost approximately $20K in design and development resources over 5 months. It generated $800K in additional annual revenue, representing a 40x ROI in the first year alone. More importantly, the improved conversion rate compounded with existing marketing efforts, making every dollar spent on acquisition 34% more effective.
+            </p>
+        </div>
+
+        <div class="two-column" style="margin-top: 60px;">
+            <div class="column">
+                <h3>Customer Feedback</h3>
+                <p style="margin-bottom: 20px;">
+                    <em>"The new checkout is so much faster! I was surprised how easy it was to complete my order on my phone."</em><br>
+                    — Sarah M., Repeat Customer
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <em>"I almost abandoned because I wasn't sure about shipping costs, but the calculator on the cart page made me feel confident about proceeding."</em><br>
+                    — James K., First-Time Buyer
+                </p>
+                <p>
+                    <em>"Apple Pay makes this the easiest checkout I've experienced. One tap and done!"</em><br>
+                    — Maria L., Mobile Shopper
+                </p>
+            </div>
+            <div class="column">
+                <h3>Business Outcomes</h3>
+                <ul>
+                    <li>Matched industry benchmark abandonment rate (45%)</li>
+                    <li>Eliminated need for increased ad spend</li>
+                    <li>Improved customer satisfaction scores by 23%</li>
+                    <li>Reduced customer support tickets by 31%</li>
+                    <li>Case study featured in Shopify and BigCommerce blogs</li>
+                    <li>Checkout optimization now core competency</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Learned Section -->
+    <section class="content-section">
+        <div class="section-label">08 — Key Lessons & Takeaways</div>
+        <h2>What I Learned About Conversion Optimization</h2>
+        
+        <div class="insights-grid">
+            <div class="insight-card">
+                <h3>1. Fix the Funnel Before Scaling Acquisition</h3>
+                <p>The founder wanted to double ad spend to compensate for poor conversion. I showed that fixing checkout would generate equivalent revenue at a fraction of the cost. Always optimize what you have before scaling what's broken.</p>
+            </div>
+            <div class="insight-card">
+                <h3>2. Mobile Can't Be an Afterthought</h3>
+                <p>With 58% of traffic on mobile, we couldn't treat it as secondary. Mobile-first design wasn't just good practice—it was business-critical. The mobile conversion improvements drove majority of our revenue gains.</p>
+            </div>
+            <div class="insight-card">
+                <h3>3. Test Independently, Launch Combined</h3>
+                <p>Testing each change separately let us isolate impact and build stakeholder confidence. But the magic happened when we combined all winning variants—the total effect (34%) exceeded the sum of individual improvements.</p>
+            </div>
+            <div class="insight-card">
+                <h3>4. Transparency Builds Trust</h3>
+                <p>Hidden costs and surprise fees destroy trust at the worst possible moment. Showing shipping costs upfront felt risky (what if it scares people away?) but actually increased conversion by eliminating negative surprises.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <p>
+                "The biggest lesson: Every form field, every extra click, every moment of uncertainty is costing you money. Ruthlessly eliminate friction, but equally important—build trust at every step. Users need to feel confident they're making a good decision."
+            </p>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="content-section">
+        <div class="section-label">09 — Future Optimization Opportunities</div>
+        <h2>Continuing the Conversion Journey</h2>
+        
+        <p class="content-text">
+            While we achieved our 34% reduction goal, there are always more opportunities to optimize. Here's what we're exploring next.
+        </p>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>Cart Abandonment Recovery</h3>
+                </div>
+                <p class="fix">Implement automated email sequences for abandoned carts with personalized incentives. SMS reminders for high-value carts. Exit-intent popups with limited-time offers.</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>AI-Powered Personalization</h3>
+                </div>
+                <p class="fix">Dynamic checkout experience based on user behavior: returning customers see one-click reorder, first-timers see trust badges more prominently, mobile users see express pay first.</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>Post-Purchase Upsells</h3>
+                </div>
+                <p class="fix">One-click upsells on thank-you page for complementary products. "Add to your order" option before shipping. This increases AOV without adding checkout friction.</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-header">
+                    <h3>Subscription Options</h3>
+                </div>
+                <p class="fix">Offer "Subscribe & Save" for consumable products during checkout. Recurring revenue stream while providing customer value through discounts and convenience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <div class="next-project-label">Next Project</div>
+        <a href="Case-study-5.html" class="next-project-link">
+            Streamlining Team Collaboration for Remote-First Companies
+            <span class="arrow">→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/maryann-muniu-8710601b5/" target="https://www.linkedin.com/in/maryann-muniu-8710601b5/">LinkedIn</a>
+                <a href="https://x.com/Jemmy88605979" target="https://x.com/Jemmy88605979">Twitter</a>
+                <a href="mailto:wambohmuniu@gmail.com">Email</a>
+                <a href="MaryAnn_Muniu_Resume.pdf">Resume</a>
+            </div>
+            <div class="footer-text">© 2024 Maryann Muniu. Crafted with purpose.</div>
+        </div>
+    </footer>
+</body>
+</html>
